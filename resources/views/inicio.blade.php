@@ -2,7 +2,7 @@
 
 <div class="container">
   <h1>Contáctanos</h1>
-  <form action="{{ route('inicio.guardarMensajeContacto') }}" method="POST">
+  <form action="{{ route('guardarMensajeContacto') }}" method="POST">
     @csrf
     <div class="form-group">
       <label for="Nombre">Nombre</label>
