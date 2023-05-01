@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\InicioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [InicioController::class, 'index'])->name('inicio.index');
+Route::get('/', [InicioController::class, 'index'])->name('inicio');
+Route::post('/', [InicioController::class, 'guardarMensajeContacto'])->name('guardarMensajeContacto');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
