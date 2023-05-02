@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [InicioController::class, 'index'])->name('inicio');
 Route::post('/', [InicioController::class, 'guardarMensajeContacto'])->name('guardarMensajeContacto');
+//Ruta para visualizar email de contacto.
+Route::get('/email_asesoramiento', function() {
+   return view('mail/contacto');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
