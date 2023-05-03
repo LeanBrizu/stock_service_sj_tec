@@ -1,5 +1,8 @@
-<!-- resources/views/contact.blade.php -->
-
+<? if ((isset($texto) && (!empty($texto)) { ?>
+	<div>
+	    <div class="mensaje-estado">{{ $texto }}</div>
+	</div>
+<? } ?>
 <div class="container">
   <h1>Contáctanos</h1>
   <form action="{{ route('guardarMensajeContacto') }}" method="POST">
@@ -77,7 +80,7 @@
         <label for="personal-inmobiliario">
         Seleccione quien le brindará atención:
         </label>
-        <select id="personal-inmobiliario">
+        <select id="personal-inmobiliario" name="Personal_inmobiliario">
             <option value="Evaristo Artigas Colom">Evaristo Artigas Colom</option>
             <option value="Josefa Cerdán Montserrat">Josefa Cerdán Montserrat</option>
             <option value="Celestino Seve Aranda Goñi">Celestino Seve Aranda Goñi</option>
@@ -101,6 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
     e.target.value = value;
   });
 });
+
+const numeroDeTelefono = document.getElementById('Telefono');
+const regexTelefonico = /^\+?\d{8,}$/;
+
+numeroDeTelefono.addEventListener('blur', () => {
+  if (!regexTelefonico.test(numeroDeTelefono.value)) {
+    numeroDeTelefono.classList.add('no-valido');
+    numeroDeTelefono.insertAdjacentHTML('afterend', '<div class="retroalimentacion-invalida">Por favor, ingrese un número telefónico válido.</div>');
+  } else {
+    numeroDeTelefono.classList.remove('no-valido');
+    numeroDeTelefono.nextElementSibling.remove();
+  }
+});
+
 </script>
 <style>
   .container {
@@ -150,5 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
   .btn-primary:hover {
     background-color: #0069d9;
     border-color: #0062cc;
+  }
+
+  .mensaje-estado{
+    margin: auto;
+  }
+
+  .no-valido {
+    border: 2px solid red;
+  }
+
+  .retroalimentacion-invalida {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
   }
 </style>
