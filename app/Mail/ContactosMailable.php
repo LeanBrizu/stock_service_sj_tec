@@ -29,7 +29,7 @@ class ContactosMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nuevo servicio de Stock.',
+            subject: 'Nuevo mensaje - Asesoramiento.',
         );
     }
 
